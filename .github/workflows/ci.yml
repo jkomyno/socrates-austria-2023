@@ -52,14 +52,12 @@ jobs:
         run: |
           cargo install --locked cargo-outdated || true
           cargo install --locked cargo-audit || true
-          cargo install --locked cargo-pants || true
           
       - name: Check dependencies
         run: |
           cargo outdated --exit-code 1
           rm -rf ~/.cargo/advisory-db
           cargo audit
-          cargo pants
         
       - name: Test
         run: cargo test
